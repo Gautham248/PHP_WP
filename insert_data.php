@@ -25,6 +25,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+     .form{
+        padding: 10px;
+        border : solid;
+        border-color:red;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+
+     }
+    </style>
 </head>
 <body>
 
@@ -49,11 +61,11 @@
                 <td>
                     AGE:
                 </td>
-                <td><input type="number" name="age" size="3"></td>
+                <td><input type="number" name="age" max="99"></td>
             </tr>
             <tr>
                 <td>MARK:</td>
-                <td><input type="number" name="mark" size="2"></td>
+                <td><input type="number" name="mark" max="100" min="0"></td>
             </tr>
         </table>
         <input type="submit" name="submit" id="submit">
@@ -77,18 +89,32 @@ else{
 
 if(isset($_POST['submit']))
 {
-    $sql = "insert into testtable values('$_POST[id]','$_POST[name]','$_POST[age]','$_POST[mark]')";
-$res=mysqli_query($conn,$sql);
-if($res===TRUE)
-{
-    echo "<br/>Data inserted ";
-}
-else{
-    echo "Error".mysqli_error($conn);
-}
-mysqli_close($conn);
+
+    if(!empty($_POST['id'])&&!empty($_POST['name'])&&!empty($_POST['age'])&&!empty($_POST['mark']))
+
+    {
+        $sql = "insert into testtable values('$_POST[id]','$_POST[name]','$_POST[age]','$_POST[mark]')";
+        $res=mysqli_query($conn,$sql);
+        if($res===TRUE)
+        {
+            echo "<br/>Data inserted ";
+        }
+        else{
+            echo "Error".mysqli_error($conn);
+        }
+        mysqli_close($conn);
+        
+    }else
+    {
+       
+        echo "<p>Enter data in all the fields !</p>";
+        //to go back to the original page
+        // header('Location: ' $_SERVER['HTTP_REFERER']);
+        // exit();
+    }
 
 }
+
 
 
     ?>
