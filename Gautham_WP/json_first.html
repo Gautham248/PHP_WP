@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="demo"></p>
+    <script>
+        var myobj={"name":"John","age":22,"city":"New York","cars":{"car1":"BMW","car2":"Fiat"}};
+        document.getElementById("demo").innerHTML =myobj.name+"</br>"+myobj.age+"</br>"+myobj.city+"</br>";
+        // for(i in myobj)
+        // {
+        //     document.write(i+"="+myobj[i]+"</br>");
+        //     // if(i===Object(myobj))
+        //     // {
+        //     //     document.write("It is what it is");
+        //     // }
+        //     // if(typeof i==="object")
+        //     // {
+        //     //     document.write("It is what it is");
+        //     // }
+        // }
+        //     for(var key in myobj.cars)
+        //     {
+        //         document.write(key+"="+myobj.cars[key]+"</br>");
+        //     }
+            
+        for(var key in myobj)
+        {
+            if(myobj.hasOwnProperty(key))
+            {
+                var propertyValue=myobj[key];
+                if(typeof propertyValue ==='object' && propertyValue!=null)
+                {
+                    for(var nestedKey in propertyValue)
+                    {
+                        document.write(key+"."+nestedKey+"="+propertyValue[nestedKey]+"</br>");
+                    }
+                }
+                else
+                {
+                    document.write(key+"="+propertyValue+"</br>");
+                }
+            }
+        }
+    </script>
+    
+</body>
+</html>

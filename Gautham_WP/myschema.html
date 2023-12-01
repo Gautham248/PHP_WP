@@ -1,0 +1,105 @@
+<!-- <html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head><body>
+    <script type="module">
+        import Ajv from "https://cdn.skypack.dev/ajv@8.6.2";
+        const ajv = new Ajv(); 
+        const studentSchema = {
+            "type": "object",
+            "properties": {
+                "id": { "type": "integer" },
+                "firstName": { "type": "string" },
+                "lastName": { "type": "string" },
+                "age": { "type": "integer" },
+                "email": { "type": "string"},
+                "courses": { "type": "array", "items": { "type": "string" } }
+            },
+            "required": ["id", "firstName", "lastName", "age", "email"]
+        };
+        const validate = ajv.compile(studentSchema);
+        const studentData = {
+            "id": 1,
+            "firstName": "John",
+            "lastName": "Doe",
+            "age": 20,
+            "email": "john.doe@example.com",
+            "courses": ["Math", "History"]
+        };
+        const valid = validate(studentData);
+        if (valid) {
+            console.log('Data is valid according to the schema');
+        } else {
+            console.log('Data is not valid:');
+            console.log(JSON.stringify(validate.errors, null, 2));
+        }
+    </script>
+
+
+</body></html> -->
+
+<!-- <script type="module">
+    import Ajv from "https://cdn.skypack.dev/ajv@8.6.2";
+       const ajv = new Ajv(); 
+const schema = {
+ type: "object",
+ properties: {
+   name: { type: "string" },
+   age: { type: "number", minimum: 18 },
+ },
+ required: ["name", "age"],
+};
+const validate = ajv.compile(schema);
+const data = { name: "John", age: 25 };
+const isValid = validate(data);
+if (isValid) {
+ console.log('Data is valid according to the schema');
+} else {
+ console.log('Data is not valid:');
+ console.log(validate.errors);
+}
+</script> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="module">
+        import Ajv from "https://cdn.skypack.dev/ajv@8.6.2";
+        const ajv = new Ajv(); 
+        const studentSchema = {
+            "type": "object",
+            "properties": {
+                "id": { "type": "integer" },
+                "firstName": { "type": "string" },
+                "lastName": { "type": "string" },
+                "age": { "type": "integer" },
+                "email": { "type": "string"},
+                "courses": { "type": "array", "items": { "type": "string" } }
+            },
+            "required": ["id", "firstName", "lastName", "age", "email"]
+        };
+        const validate = ajv.compile(studentSchema);
+        const studentData = {
+            "id": 1,
+            "firstName": "John",
+            "lastName": "Doe",
+            "age": 20,
+            "email": "john.doe@example.com",
+            "courses": ["Math", "History"]
+        };
+        const valid = validate(studentData);
+        if (valid) {
+            console.log('Data is valid according to the schema');
+        } else {
+            console.log('Data is not valid:');
+            console.log(JSON.stringify(validate.errors, null, 2));
+        }
+    </script>
+</body>
+</html>
